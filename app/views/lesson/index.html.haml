@@ -1,0 +1,8 @@
+%h1 
+	= link_to "Lesson index", skill_index_path(@skill.language.code)
+%ul
+- @lessons.each do |lesson|
+	%li
+		= link_to "[Tanulás]", learn_lesson_path(params[:language_code], params[:skill_code], lesson.code)
+		= link_to lesson.name, sentence_index_path(params[:language_code], params[:skill_code], lesson.code)
+= link_to "Új óra létrehozása", lesson_new_path

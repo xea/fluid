@@ -1,4 +1,4 @@
 fluid
 =====
 
-Fluid language learning 
+Open source language learning tool

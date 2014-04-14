@@ -1,0 +1,46 @@
+!!!html
+%html{ ng: { app: "fluid" } }
+	%head
+		%title Fluid
+		= stylesheet_link_tag	 "/bootstrap/css/bootstrap.min.css"
+		= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+		= javascript_include_tag "application", "data-turbolinks-track" => true 
+		= javascript_include_tag "angular", "data-turbolinks-track" => true
+		= javascript_include_tag "angular-route", "data-turbolinks-track" => true
+		= javascript_include_tag "angular-resource", "data-turbolinks-track" => true
+		= javascript_include_tag "/bootstrap/js/bootstrap.js"
+		= javascript_include_tag "api", "data-turbolinks-track" => true 
+		= csrf_meta_tags
+	%body
+		#header.navbar.navbar-inverse
+			.container
+				= render partial: "top_menu"
+		.container
+			#flash
+				- unless flash[:error].nil?
+					.alert.alert-dismissable.alert-danger
+						%button{ type: :button, class: :close, 'data-dismiss' => :alert }
+							x
+						= flash[:error]
+				- unless flash[:warning].nil?
+					.alert.alert-dismissable.alert-warning
+						%button{ type: :button, class: :close, 'data-dismiss' => :alert }
+							x
+						= flash[:warning]
+				- unless flash[:info].nil?
+					.alert.alert-dismissable.alert-info
+						%button{ type: :button, class: :close, 'data-dismiss' => :alert }
+							x
+						= flash[:info]
+				- unless flash[:success].nil?
+					.alert.alert-dismissable.alert-success
+						%button{ type: :button, class: :close, 'data-dismiss' => :alert }
+							x
+						= flash[:success]
+		#content
+			= yield
+		#footer
+			.container
+				%blockquote.pull-right
+					%p.text-muted
+						Fluid language learning (c) xea 2014

@@ -1,0 +1,7 @@
+%h1 
+	= link_to "Skills", language_index_path
+%ul
+- @skills.each do |skill|
+	%li
+		= link_to skill.name, lesson_index_path(params[:language_code], skill.code)
+= link_to "Új skill hozzáadása", skill_new_path(params[:language_code])

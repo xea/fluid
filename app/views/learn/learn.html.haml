@@ -1,0 +1,19 @@
+- content_for :head do
+	= javascript_include_tag "learn", "data-turbolinks-track" => true 
+%h1
+= javascript_tag do 
+	var config = { languageCode: "#{@language.code}", skillCode: "#{@skill.code}", lessonCode: "#{@lesson.code}" };
+#question
+%textarea#user-input{ type: :text }
+%input#sentence-type{ type: :hidden }
+#sentence-id
+%button#button-submit.btn.btn-primary
+	Submit
+#debug
+#colorpanel
+	#panel1
+	#panel2
+	#panel3
+	#panel4
+	#panel5
+	#panel6

@@ -1,0 +1,12 @@
+%h1
+	= link_to "Fordítások", sentence_index_path(@sentence.lesson.skill.language.code, @sentence.lesson.skill.code, @sentence.lesson.code)
+
+= form_for :relation do |f|
+	%ul
+	- @sentences.each do |sentence|
+		%li
+			= f.check_box "check_#{sentence.id}", checked: sentence == @sentence, disabled: sentence == @sentence
+			= sentence.text
+	= f.hidden_field :sentence_id, { value: @sentence.id }
+	= f.submit
+

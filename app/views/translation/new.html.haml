@@ -1,0 +1,9 @@
+%h1 Új fordítás
+= form_for :translation do |f|
+	= f.label :text
+	= f.text_field :text
+
+	= f.label :accepted
+	= f.check_box :accepted
+
+	= f.submit

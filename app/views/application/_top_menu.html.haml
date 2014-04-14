@@ -1,0 +1,30 @@
+.navbar-header
+	%a{ class: "navbar-brand", href: "/" }
+		Fluid
+%ul.nav.navbar-nav
+	- if authenticated?
+		= active_link_to "Dashboard", "/", wrap_tag: :li, active: [ ['dashboard'], ['index'] ]
+		= active_link_to "Play", "/play", wrap_tag: :li
+		= active_link_to "Practice", "/practice", wrap_tag: :li
+		= active_link_to "Explore", "/explore", wrap_tag: :li
+		= active_link_to "Challenge", "/challenge", wrap_tag: :li
+%ul.nav.navbar-right.navbar-nav
+	- if authenticated?
+		- if current_user.has_role? :global_admin
+			%li.dropdown
+				%a.dropdown-toggle{ href: "#", 'data-toggle' => :dropdown }
+					Administration
+					%b.caret
+				%ul.dropdown-menu
+					%li
+						%a{ href: "/admin", target: :_self }
+							Languages
+		%li.dropdown
+			%a.dropdown-toggle{ href: "#", 'data-toggle' => :dropdown }
+				= current_user.name
+				%b.caret
+			%ul.dropdown-menu
+				%li.divider
+				%li
+					%a{ href: "/signout" }
+						Sign out

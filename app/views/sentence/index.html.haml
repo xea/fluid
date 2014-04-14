@@ -1,0 +1,11 @@
+%h1 
+	= link_to "Mondatok", lesson_index_path(@lesson.skill.language.code, @lesson.skill.code)
+= link_to "Új mondat felvétele", sentence_new_path
+%ul
+- @sentences.each do |sentence|
+	%li
+		= link_to "[Fordítások]", translation_index_path(sentence.id)
+		= link_to "[Kapcsolatok]", sentence_reference_index_path(sentence.id)
+		= sentence.text
+		\/
+		= sentence.default_translation

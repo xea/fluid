@@ -1,0 +1,17 @@
+%table.table.table-stripped.table-hover
+	%thead
+		%tr
+			%th
+				ID
+			%th
+				Language
+			%th
+				&nbsp;
+	%tbody
+		- @languages.each do |language|
+			%tr
+				%td
+					= language.id
+				%td
+					= language.name
+

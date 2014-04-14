@@ -1,0 +1,21 @@
+#new-language-modal.modal
+	.modal-dialog.modal-sm
+		.modal-content
+			.modal-header
+				%button.close{ type: :button, "data-dismiss" => :modal, "aria-hidden" => :true }
+					x
+				%h4.modal-title
+					New language
+			.modal-body
+				%p
+					%form.form-horizontal
+						.form-group
+							.col-lg-12
+								%input#new-lang-name.form-control{ type: :text, name: "language_name", placeholder: "Language name (eg. German)" }
+									
+			.modal-footer
+				%button.btn.btn-default{ type: :button, "data-dismiss" => :modal }
+					Cancel
+				%button#new-language-save.btn.btn-primary
+					Save
+

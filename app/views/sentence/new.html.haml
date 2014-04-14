@@ -1,0 +1,9 @@
+%h1 Új mondat
+= form_for :sentence do |f|
+	= f.label :text
+	= f.text_field :text
+
+	= f.label :default_translation
+	= f.text_field :default_translation
+
+	= f.submit

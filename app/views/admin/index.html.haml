@@ -1,0 +1,108 @@
+= javascript_include_tag "admin", "data-turbolinks-track" => true 
+
+#admin-container.container{ ng: { controller: :languageController } }
+	#sentence-details.modal.fade
+		.modal-dialog
+			.modal-content
+				.modal-header
+					%button.close{ type: :button, data: { dismiss: :modal }, aria: { hidden: :true } }
+						x
+					%h4.modal-title
+						Edit sentence
+				.modal-body
+					%ul.nav.nav-tabs
+						%li.active
+							%a{ href: "#home", data: { toggle: :tab } }
+								Details
+						%li
+							%a{ href: "#translations", data: { toggle: :tab } }
+								Translations
+						%li
+							%a{ href: "#references", data: { toggle: :tab } }
+								References
+					#sentence-details-content.tab-content
+						%p
+							#home.tab-pane.fade.active.in
+								%form
+									.row
+										.col-xs-6
+											%input.form-control{ type: :text, ng: { model: "selectedSentence.text" } }
+											%span.help-block
+												This text will be displayed in forward questions
+									.row
+										.col-xs-6
+											%input.form-control{ type: :text, ng: { model: "selectedSentence.default_translation" } }
+											%span.help-block
+												This is the default translation of the sentence
+							#translations.tab-pane.fade
+								%form
+									.row
+										.col-xs-8
+											.input-group
+												%input.form-control{ type: :text, ng: { model: "new_translation", enter: "addNewTranslation(new_translation)" }, placeholder: "Enter new translation here" }
+												%span.input-group-btn
+													%button.btn.btn-info{ type: :button, ng: { click: "addNewTranslation(new_translation)" } } Add
+								%table.table.table-striped
+									%thead
+										%tr
+											%th Text
+									%tbody
+										%tr{ ng: { repeat: " translation in translations" } }
+											%td{ "click-to-edit" => "translation.text", "on-save" => "updateTranslation(translation)" }
+							#references.tab-pane.fade
+								%table.table.table-striped
+									%thead
+										%tr
+											%th Text
+									%tbody
+										%tr{ ng: { repeat: " reference in references" } }
+											%td
+												{{ reference.text }}
+				.modal-footer
+					%button.btn.btn-default{ data: { dismiss: :modal } }
+						Close
+					%button.btn.btn-primary
+						Save
+	.row
+		%h1.page-header
+			= t 'title.administration'
+	.row
+		.col-lg-7
+			.input-group
+				%span.input-group-addon{ data: { toggle: :tooltip, placement: :top, original: { title: "Original title" } } }
+					.glyphicon.glyphicon-home	
+				%input#language-filter.form-control{ type: :text, ng: { model: :language_filter }, placeholder: "Search language... or create one" }
+				%input#skill-filter.form-control{ type: :text, ng: { model: :skill_filter }, placeholder: "Search skill... or create one" }
+				%input#lesson-filter.form-control{ type: :text, ng: { model: :lesson_filter }, placeholder: "Search lesson... or create one" }
+				%input#sentence-filter.form-control{ type: :text, ng: { model: :sentence_filter }, placeholder: "Search sentence... or create one" }
+				%input#default-translation.form-control{ type: :text, ng: { model: :default_translation }, placeholder: "Translation" }
+				%span.input-group-btn
+					%button#create-language-button.btn.btn-info{ type: :button, ng: { click: "createLanguage(language_filter)" } } Create
+					%button#create-skill-button.btn.btn-info{ type: :button, ng: { click: "createSkill(skill_filter)" } } Create
+					%button#create-lesson-button.btn.btn-info{ type: :button, ng: { click: "createLesson(lesson_filter)" } } Create
+					%button#create-sentence-button.btn.btn-info{ type: :button, ng: { click: "createSentence(sentence_filter, default_translation)" } } Create
+	.row
+		.col-lg-2
+			.panel.panel-default
+				.panel-body
+					.row{ ng: { repeat: "language in languages | filter: language_filter | orderBy: orderProp " } }
+						%button.btn.btn-default.btn-block{ type: :button, ng: { click: "selectLanguage(language)" } }
+							{{ language.name }}
+		.col-lg-2
+			.panel.panel-default
+				.panel-body
+					.row{ ng: { repeat: "skill in skills | filter: skill_filter " } }
+						%button.btn.btn-default.btn-block{ type: :button, ng: { click: "selectSkill(skill)" } }
+							{{ skill.name }}
+		.col-lg-2
+			.panel.panel-default
+				.panel-body
+					.row{ ng: { repeat: "lesson in lessons | filter: lesson_filter " } }
+						%button.btn.btn-default.btn-block{ type: :button, ng: { click: "selectLesson(lesson)" } }
+							{{ lesson.name }}
+		.col-lg-6
+			.panel.panel-default
+				.panel-body
+					.row{ ng: { repeat: "sentence in sentences | filter: sentence_filter " } }
+						%button.btn.btn-default.btn-block{ type: :button, ng: { click: "selectSentence(sentence)" } }
+							{{ sentence.text }}

@@ -1,0 +1,9 @@
+%h1 Új lecke
+= form_for :lesson do |f|
+	= f.label :name
+	= f.text_field :name
+
+	= f.label :code
+	= f.text_field :code
+
+	= f.submit

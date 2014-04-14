@@ -1,0 +1,10 @@
+.container
+	#login-panel.jumbotron
+		%h1
+			= t "title.sign_in"
+		= form_for :credentials do |f|
+			= f.text_field :email, class: "form-control", placeholder: "E-mail address", required: true, autofocus: true
+			= f.password_field :password, class: "form-control", placeholder: "Password", required: true
+			= f.submit class: "btn btn-success", value: "Submit"
+			= link_to "register", user_register_path
+			= link_to "or log in with Facebook", "/auth/facebook" 

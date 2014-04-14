@@ -1,0 +1,14 @@
+%h1 
+	= link_to "Fordítások", sentence_index_path(@sentence.lesson.skill.language.code, @sentence.lesson.skill.code, @sentence.lesson.code)
+Mondat:
+= "#{@sentence.text}"
+%br
+Alapértelmezett fordítás: 
+= "#{@sentence.default_translation}"
+%br
+= link_to "Új fordítás hozzáadása", translation_new_path(@sentence.id)
+%br
+%ul
+- @translations.each do |translation|
+	%li
+		= translation.text

@@ -1,0 +1,76 @@
+$blue1: #1e7bff
+$blue2: #1968ff
+$green1: #80b212
+$green2: #afff00
+$red1: #cc3014
+$red2: #b22209
+
+$bgcolor: #1d1d26
+
+body
+
+@mixin panel-small
+	max-width: 500px
+	margin: 0 auto
+
+@mixin modal-medium
+	max-width: 600px
+	margin: 30px auto
+
+#login-panel
+	@include panel-small
+
+#register-panel
+	@include panel-small
+
+#register-facebook-modal
+	@include modal-medium
+
+#admin-container
+	#skill-filter
+		display: none
+	#lesson-filter
+		display: none
+	#sentence-filter
+		display: none
+	#create-skill-button
+		display: none
+	#create-lesson-button
+		display: none
+	#create-sentence-button
+		display: none
+	#default-translation
+		display: none
+
+#debug
+	position: absolute
+	top: 0
+	right: 0
+	border: 1px solid
+	background-color: #ff9
+
+#colorpanel
+	#panel1
+		width: 200px
+		height: 50px
+		background-color: $blue1
+	#panel2
+		width: 200px
+		height: 50px
+		background-color: $blue2
+	#panel3
+		width: 200px
+		height: 50px
+		background-color: $green1
+	#panel4
+		width: 200px
+		height: 50px
+		background-color: $green2
+	#panel5
+		width: 200px
+		height: 50px
+		background-color: $red1
+	#panel6
+		width: 200px
+		height: 50px
+		background-color: $red2
