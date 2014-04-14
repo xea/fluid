@@ -42,3 +42,11 @@ adminService.factory('Translation', [ '$resource',
 		});
 	}
 ]);
+
+adminService.factory('Reference', [ '$resource', 
+	function($resource) {
+		return $resource('/api/reference/$referenceId', {}, {
+			list: { method: 'GET', url: "/api/sentence/:sentenceId/references", params: { sentenceId: "@sentenceId" }, isarray: true }
+		});
+	}
+]);

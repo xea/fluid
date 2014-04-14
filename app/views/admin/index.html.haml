@@ -55,8 +55,9 @@
 										%tr
 											%th Text
 									%tbody
-										%tr{ ng: { repeat: " reference in references" } }
+										%tr{ ng: { repeat: " reference in sentences" } }
 											%td
+												%input{ type: :checkbox }
 												{{ reference.text }}
 				.modal-footer
 					%button.btn.btn-default{ data: { dismiss: :modal } }

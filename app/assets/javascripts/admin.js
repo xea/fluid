@@ -1,6 +1,6 @@
 var controllers = angular.module("controllers", []);
 
-controllers.controller("languageController", function($scope, Language, Skill, Lesson, Sentence, Translation) {
+controllers.controller("languageController", function($scope, Language, Skill, Lesson, Sentence, Translation, Reference) {
 
 	$scope.listLanguages = function() {
 		$scope.languages = Language.list();
@@ -60,6 +60,7 @@ controllers.controller("languageController", function($scope, Language, Skill, L
 	$scope.selectSentence = function(sentence) {
 		$scope.selectedSentence = sentence;
 		$scope.translations = Translation.list({ sentenceId: sentence.id });
+//		$scope.references = Reference.list({ sentenceId: sentence.id });
 		$("#sentence-details").modal("show");
 	};
 

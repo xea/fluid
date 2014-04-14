@@ -102,7 +102,15 @@ class AdminController < ApplicationController
 		translation.text = params[:translation][:text]
 		translation.save
 
-		render json: { status: :okk }
+		render json: { status: :ok }
+	end
+
+	def list_references
+		render json: Sentence.where(params[:sentence_id]).first.references.to_json
+	end
+
+	def update_references
+		render json: { status: :ok }
 	end
 
 private

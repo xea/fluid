@@ -18,6 +18,9 @@ Fluid::Application.routes.draw do
 	get "api/lesson/:lesson_id/sentences" => "admin#list_sentences", as: :list_sentences
 	post "api/sentence" => "admin#create_sentence", as: :create_sentence
 
+	get "api/sentence/:sentence_id/references" => "admin#list_references", as: :list_references
+	post "api/sentence/:sentence_id/references" => "admin#update_references", as: :update_references
+
 	get "api/sentence/:sentence_id/translations" => "admin#list_translations", as: :list_translations
 	post "api/translation" => "admin#create_translation", as: :create_translation
 	post "api/translation/:translation_id" => "admin#update_translation", as: :update_translation
